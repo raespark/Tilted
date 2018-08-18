@@ -11,7 +11,12 @@ config_version=3
 [application]
 
 config/name="AwesomeSquared"
+run/main_scene="res://test.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+globalVars="*res://globalVars.gd"
 
 [display]
 
@@ -20,4 +25,5 @@ window/stretch/aspect="keep"
 
 [rendering]
 
+environment/default_clear_color=Color( 0.121569, 0.141176, 0.129412, 1 )
 environment/default_environment="res://default_env.tres"

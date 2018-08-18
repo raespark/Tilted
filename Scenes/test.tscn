@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/ColorChange.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 600, 60 )
+
+[node name="Node2D" type="Node2D" index="0"]
+
+[node name="Player" parent="." index="0" instance=ExtResource( 1 )]
+
+position = Vector2( 123.076, -57.325 )
+
+[node name="DefaultFloors" type="Node2D" parent="." index="1"]
+
+[node name="ColorRect2" type="ColorRect" parent="DefaultFloors" index="0" groups=[
+"Floor",
+]]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -91.0
+margin_top = 519.0
+margin_right = 1109.0
+margin_bottom = 639.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.862745, 0.882353, 0.870588, 1 )
+script = ExtResource( 2 )
+_sections_unfolded = [ "Margin", "Rect" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="DefaultFloors/ColorRect2" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DefaultFloors/ColorRect2/StaticBody2D" index="0"]
+
+position = Vector2( 600.007, 59.9855 )
+shape = SubResource( 1 )
+
+[connection signal="color_change_needed" from="Player" to="DefaultFloors/ColorRect2" method="_change_color"]
+
+
