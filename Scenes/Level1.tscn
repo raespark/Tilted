@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Sprites/background.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/tinyCloud.png" type="Texture" id=2]
@@ -7,13 +7,20 @@
 [ext_resource path="res://Sprites/cloud.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/tree.png" type="Texture" id=6]
 [ext_resource path="res://Scripts/ColorChangeBackgroundSprite.gd" type="Script" id=7]
-[ext_resource path="res://Scenes/Goal.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scripts/ColorChange.gd" type="Script" id=10]
-[ext_resource path="res://Sprites/grass2.png" type="Texture" id=11]
-[ext_resource path="res://Scripts/GrassColors.gd" type="Script" id=12]
-[ext_resource path="res://Sprites/grass.png" type="Texture" id=13]
-[ext_resource path="res://Sprites/arrow.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/goal.png" type="Texture" id=8]
+[ext_resource path="res://Scripts/GrassColors.gd" type="Script" id=9]
+[ext_resource path="res://Scenes/Goal.gd" type="Script" id=10]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scripts/ColorChange.gd" type="Script" id=12]
+[ext_resource path="res://Sprites/grass2.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/grass.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/arrow.png" type="Texture" id=15]
+[ext_resource path="res://Scenes/Music.tscn" type="PackedScene" id=16]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 20.085, 60.4385 )
 
 [sub_resource type="RectangleShape2D" id=3]
 
@@ -28,6 +35,8 @@ extents = Vector2( 28.0141, 429.951 )
 [node name="Level1" type="Node2D" index="0"]
 
 [node name="Background" type="Node2D" parent="." index="0"]
+
+editor/display_folded = true
 
 [node name="background" type="Sprite" parent="Background" index="0"]
 
@@ -63,11 +72,38 @@ scale = Vector2( -1.07592, 0.906283 )
 texture = ExtResource( 6 )
 script = ExtResource( 7 )
 
-[node name="goal" parent="." index="1" instance=ExtResource( 8 )]
+[node name="goal" type="Sprite" parent="." index="1"]
+
+position = Vector2( 943.496, 424.822 )
+scale = Vector2( 0.3117, 0.375236 )
+texture = ExtResource( 8 )
+script = ExtResource( 9 )
+
+[node name="Goal" type="Area2D" parent="goal" index="0"]
+
+position = Vector2( -3026.93, -1132.15 )
+scale = Vector2( 3.20821, 2.66499 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 15
+collision_mask = 15
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 10 )
+_sections_unfolded = [ "Collision", "Pickable" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="goal/Goal" index="0"]
+
+position = Vector2( 939.281, 430.544 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Visibility" ]
 
 [node name="Player" parent="." index="2" groups=[
 "Player",
-] instance=ExtResource( 9 )]
+] instance=ExtResource( 11 )]
 
 position = Vector2( 140.759, 124.899 )
 
@@ -107,22 +143,22 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 1, 1, 1, 1 )
-script = ExtResource( 10 )
+script = ExtResource( 12 )
 _sections_unfolded = [ "Rect" ]
 
 [node name="grass2" type="Sprite" parent="Default" index="1"]
 
 position = Vector2( 731.035, 477.229 )
 scale = Vector2( 0.550662, 0.550662 )
-texture = ExtResource( 11 )
-script = ExtResource( 12 )
+texture = ExtResource( 13 )
+script = ExtResource( 9 )
 
 [node name="grass" type="Sprite" parent="Default" index="2"]
 
 position = Vector2( 66.4643, 481.183 )
 scale = Vector2( 0.462386, 0.462386 )
-texture = ExtResource( 13 )
-script = ExtResource( 12 )
+texture = ExtResource( 14 )
+script = ExtResource( 9 )
 
 [node name="Wall" type="StaticBody2D" parent="Default" index="3"]
 
@@ -165,7 +201,7 @@ shape = SubResource( 2 )
 self_modulate = Color( 1, 1, 1, 0.686275 )
 position = Vector2( 240.884, 453.169 )
 scale = Vector2( 0.141966, 0.143673 )
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 script = ExtResource( 3 )
 _sections_unfolded = [ "Visibility" ]
 
@@ -175,7 +211,7 @@ self_modulate = Color( 1, 1, 1, 0.686275 )
 position = Vector2( 142.204, 373.259 )
 rotation = -1.57088
 scale = Vector2( 0.141966, 0.143673 )
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 script = ExtResource( 3 )
 _sections_unfolded = [ "Visibility" ]
 
@@ -185,27 +221,29 @@ self_modulate = Color( 1, 1, 1, 0.686275 )
 position = Vector2( 48.9662, 453.169 )
 rotation = 3.14124
 scale = Vector2( 0.141966, 0.143673 )
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 script = ExtResource( 3 )
 
+[node name="Music" parent="." index="7" instance=ExtResource( 16 )]
+
 [connection signal="color_change_needed" from="Player" to="Default/StaticBody2D/ColorRect" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="Background/tinyCloud" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="Background/smallCloud" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="Background/cloud" method="_change_color"]
 
 [connection signal="color_change_needed" from="Player" to="Background/tree" method="_change_color"]
 
 [connection signal="color_change_needed" from="Player" to="Default/grass" method="_change_color"]
 
+[connection signal="color_change_needed" from="Player" to="Default/grass2" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Background/cloud" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Background/tinyCloud" method="_change_color"]
+
 [connection signal="color_change_needed" from="Player" to="arrow" method="_change_color"]
 
 [connection signal="color_change_needed" from="Player" to="arrow3" method="_change_color"]
 
-[connection signal="color_change_needed" from="Player" to="Default/grass2" method="_change_color"]
-
 [connection signal="color_change_needed" from="Player" to="arrow2" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Background/smallCloud" method="_change_color"]
 
 

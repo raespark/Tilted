@@ -1,17 +1,19 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Sprites/background.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/tree.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/ColorChangeBackgroundSprite.gd" type="Script" id=3]
 [ext_resource path="res://Sprites/smallCloud.png" type="Texture" id=4]
 [ext_resource path="res://Scripts/CloudColors.gd" type="Script" id=5]
-[ext_resource path="res://Scenes/Goal.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scripts/ShowForColor.gd" type="Script" id=8]
-[ext_resource path="res://Sprites/grass2.png" type="Texture" id=9]
-[ext_resource path="res://Scripts/GrassColors.gd" type="Script" id=10]
-[ext_resource path="res://Scripts/ColorChange.gd" type="Script" id=11]
-[ext_resource path="res://Sprites/grass.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/bush.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/Goal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scripts/ShowForColor.gd" type="Script" id=9]
+[ext_resource path="res://Sprites/grass2.png" type="Texture" id=10]
+[ext_resource path="res://Scripts/GrassColors.gd" type="Script" id=11]
+[ext_resource path="res://Scripts/ColorChange.gd" type="Script" id=12]
+[ext_resource path="res://Sprites/grass.png" type="Texture" id=13]
+[ext_resource path="res://Scenes/Music.tscn" type="PackedScene" id=14]
 
 [sub_resource type="RectangleShape2D" id=4]
 
@@ -26,14 +28,14 @@ extents = Vector2( 805, 75 )
 [sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
-extents = Vector2( 61.0345, 25 )
+extents = Vector2( 236.917, 172.784 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 28.0141, 429.951 )
 
-[node name="Level2" type="Node2D" index="0"]
+[node name="Level2" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="." index="0"]
 
@@ -56,29 +58,36 @@ position = Vector2( 843.868, 250.013 )
 texture = ExtResource( 4 )
 script = ExtResource( 5 )
 
-[node name="goal" parent="." index="1" instance=ExtResource( 6 )]
+[node name="bush" type="Sprite" parent="Background" index="3"]
 
-position = Vector2( 606.184, 89.165 )
+position = Vector2( 1007.79, 116.962 )
+scale = Vector2( 0.51011, 0.51011 )
+texture = ExtResource( 6 )
+script = ExtResource( 3 )
+
+[node name="goal" parent="." index="1" instance=ExtResource( 7 )]
+
+position = Vector2( 849.317, 89.165 )
 scale = Vector2( 0.3117, 0.337233 )
 
 [node name="Player" parent="." index="2" groups=[
 "Player",
-] instance=ExtResource( 7 )]
+] instance=ExtResource( 8 )]
 
 position = Vector2( 84.0922, 88.6378 )
 
 [node name="Color2" type="Node2D" parent="." index="3"]
 
 editor/display_folded = true
-script = ExtResource( 8 )
+script = ExtResource( 9 )
 color_index_to_hide = 1
 
 [node name="grass2" type="Sprite" parent="Color2" index="0"]
 
-position = Vector2( 571.56, 288.955 )
+position = Vector2( 522.06, 288.955 )
 scale = Vector2( 0.268241, 0.268241 )
-texture = ExtResource( 9 )
-script = ExtResource( 10 )
+texture = ExtResource( 10 )
+script = ExtResource( 11 )
 
 [node name="Platform" type="ColorRect" parent="Color2" index="1"]
 
@@ -97,7 +106,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 1, 1, 1, 1 )
-script = ExtResource( 11 )
+script = ExtResource( 12 )
 _sections_unfolded = [ "Rect" ]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Color2/Platform" index="0"]
@@ -152,7 +161,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 1, 1, 1, 1 )
-script = ExtResource( 11 )
+script = ExtResource( 12 )
 _sections_unfolded = [ "Rect" ]
 
 [node name="Platform" type="ColorRect" parent="Default" index="1"]
@@ -163,8 +172,8 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 545.0
 margin_top = 147.0
-margin_right = 666.0
-margin_bottom = 197.0
+margin_right = 1028.0
+margin_bottom = 503.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -172,7 +181,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 1, 1, 1, 1 )
-script = ExtResource( 11 )
+script = ExtResource( 12 )
 _sections_unfolded = [ "Rect" ]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Default/Platform" index="0"]
@@ -188,22 +197,23 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Default/Platform/StaticBody2D" index="0"]
 
-position = Vector2( 59.5598, 25.1118 )
+position = Vector2( 237.211, 173.358 )
 shape = SubResource( 5 )
 
 [node name="grass2" type="Sprite" parent="Default" index="2"]
 
-position = Vector2( 637.713, 461.711 )
-scale = Vector2( 0.972281, 0.867361 )
-texture = ExtResource( 9 )
-script = ExtResource( 10 )
+position = Vector2( 693.43, 126.444 )
+scale = Vector2( 0.5889, 0.667814 )
+texture = ExtResource( 10 )
+script = ExtResource( 11 )
 
 [node name="grass" type="Sprite" parent="Default" index="3"]
 
-position = Vector2( 825.925, 472.565 )
-scale = Vector2( 1.19599, 0.658247 )
-texture = ExtResource( 12 )
-script = ExtResource( 10 )
+position = Vector2( 198.686, 473.059 )
+rotation = -0.131869
+scale = Vector2( 0.679745, 0.547767 )
+texture = ExtResource( 13 )
+script = ExtResource( 11 )
 
 [node name="Wall" type="StaticBody2D" parent="Default" index="4"]
 
@@ -241,24 +251,28 @@ _sections_unfolded = [ "Collision" ]
 position = Vector2( -46.9026, 209.961 )
 shape = SubResource( 2 )
 
-[connection signal="color_change_needed" from="Player" to="Default/StaticBody2D/ColorRect" method="_change_color"]
+[node name="Music" parent="." index="5" instance=ExtResource( 14 )]
 
 [connection signal="color_change_needed" from="Player" to="Color2/Platform" method="_change_color"]
 
+[connection signal="color_change_needed" from="Player" to="Default/StaticBody2D/ColorRect" method="_change_color"]
+
 [connection signal="color_change_needed" from="Player" to="Default/Platform" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Background/tree" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Background/smallCloud" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Background/bush" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="goal" method="_change_color"]
 
 [connection signal="color_change_needed" from="Player" to="Default/grass2" method="_change_color"]
 
 [connection signal="color_change_needed" from="Player" to="Default/grass" method="_change_color"]
 
-[connection signal="color_change_needed" from="Player" to="Background/tree" method="_change_color"]
-
 [connection signal="color_change_needed" from="Player" to="Color2" method="determine_if_show"]
 
-[connection signal="color_change_needed" from="Player" to="goal" method="_change_color"]
-
 [connection signal="color_change_needed" from="Player" to="Color2/grass2" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="Background/smallCloud" method="_change_color"]
 
 

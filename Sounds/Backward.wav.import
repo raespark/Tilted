@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Backward.wav-146e98f992bb3b6a98ec87362be1d100.sample"
+
+[deps]
+
+source_file="res://Sounds/Backward.wav"
+source_md5="230264c3095a01790a383858d374426b"
+
+dest_files=[ "res://.import/Backward.wav-146e98f992bb3b6a98ec87362be1d100.sample" ]
+dest_md5="fc7f777e9cc941adca7679147e43ebd0"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

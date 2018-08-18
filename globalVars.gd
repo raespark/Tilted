@@ -1,11 +1,17 @@
 extends Node
 # Keeps track of variables global to the project
 
-var current_level = 0
-
-var levels = ["Level1.tscn", "Level2.tscn"]
-
+# Debug flag
 var debug = false
+
+# Where in the music to start playing when traversing levels
+var music_time = 0.0
+
+# Level player is currently playing
+var current_level = 0
+# Levels to traverse
+var levels = ["Level1.tscn", "Level2.tscn", "Level3.tscn"]
+
 # What color is currently shown
 var color_index = 0
 # List of all the normal colors
