@@ -5,9 +5,9 @@ signal color_change_needed
 # The force pulling player down towards the ground
 const GRAVITY = 3000
 # How much force player has to jump
-const JUMP_FORCE = -1600
+const JUMP_FORCE = -1300
 # How much to rotate each frame
-const ROTATION_SPEED = .2
+const ROTATION_SPEED = .15
 # How much to move per frame
 const MOVEMENT_SPEED = 800
 # How how to float when freeze rotating

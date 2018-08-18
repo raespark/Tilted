@@ -1,18 +1,24 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scripts/ColorChange.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/HideForColor.gd" type="Script" id=3]
-
-[sub_resource type="RectangleShape2D" id=1]
-
-custom_solver_bias = 0.0
-extents = Vector2( 600, 60 )
+[ext_resource path="res://Scenes/ShowForColor.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/ColorChange.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/HideForColor.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 77.2493, 20.9977 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 30, 225 )
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 600, 60 )
 
 [node name="Node2D" type="Node2D" index="0"]
 
@@ -21,9 +27,98 @@ extents = Vector2( 77.2493, 20.9977 )
 position = Vector2( 123.076, -57.325 )
 collision_layer = 1
 
-[node name="DefaultFloors" type="Node2D" parent="." index="1"]
+[node name="Color1" type="Node2D" parent="." index="1"]
 
-[node name="ColorRect2" type="ColorRect" parent="DefaultFloors" index="0" groups=[
+editor/display_folded = true
+script = ExtResource( 2 )
+color_index_to_hide = 0
+
+[node name="ColorRect" type="ColorRect" parent="Color1" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 520.0
+margin_top = 295.0
+margin_right = 674.0
+margin_bottom = 335.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.858824, 0.882353, 0.866667, 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Color1/ColorRect" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Color1/ColorRect/StaticBody2D" index="0"]
+
+position = Vector2( 76.7441, 20.436 )
+shape = SubResource( 2 )
+
+[node name="Color4" type="Node2D" parent="." index="2"]
+
+script = ExtResource( 4 )
+color_index_to_show = 3
+
+[node name="ColorRect" type="ColorRect" parent="Color4" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 283.0
+margin_top = 319.0
+margin_right = 334.0
+margin_bottom = 590.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.858824, 0.882353, 0.866667, 1 )
+script = ExtResource( 3 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Color4/ColorRect" index="0"]
+
+input_pickable = false
+collision_layer = 7
+collision_mask = 7
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Color4/ColorRect/StaticBody2D" index="0"]
+
+position = Vector2( 25.3117, 120.239 )
+scale = Vector2( 0.837169, 0.539406 )
+shape = SubResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Default" type="Node2D" parent="." index="3"]
+
+editor/display_folded = true
+
+[node name="ColorRect2" type="ColorRect" parent="Default" index="0" groups=[
 "Floor",
 ]]
 
@@ -42,10 +137,10 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 0.862745, 0.882353, 0.870588, 1 )
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 _sections_unfolded = [ "Margin", "Rect" ]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="DefaultFloors/ColorRect2" index="0"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Default/ColorRect2" index="0"]
 
 input_pickable = false
 collision_layer = 15
@@ -56,58 +151,19 @@ friction = 1.0
 bounce = 0.0
 _sections_unfolded = [ "Collision" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DefaultFloors/ColorRect2/StaticBody2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Default/ColorRect2/StaticBody2D" index="0"]
 
 position = Vector2( 600.007, 59.9855 )
 shape = SubResource( 1 )
 
-[node name="FloorColor1" type="Node2D" parent="." index="2"]
+[connection signal="color_change_needed" from="Player" to="Color4/ColorRect" method="_change_color"]
 
-script = ExtResource( 3 )
-color_index_to_hide = 0
+[connection signal="color_change_needed" from="Player" to="Default/ColorRect2" method="_change_color"]
 
-[node name="ColorRect" type="ColorRect" parent="FloorColor1" index="0"]
+[connection signal="color_change_needed" from="Player" to="Color1/ColorRect" method="_change_color"]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 520.0
-margin_top = 295.0
-margin_right = 674.0
-margin_bottom = 335.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-color = Color( 1, 1, 1, 1 )
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
+[connection signal="color_change_needed" from="Player" to="Color1" method="determine_if_show"]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="FloorColor1/ColorRect" index="0"]
-
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Collision" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorColor1/ColorRect/StaticBody2D" index="0"]
-
-position = Vector2( 76.7441, 20.436 )
-shape = SubResource( 2 )
-
-[connection signal="color_change_needed" from="Player" to="DefaultFloors/ColorRect2" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="FloorColor1/ColorRect" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="FloorColor1" method="determine_if_show"]
+[connection signal="color_change_needed" from="Player" to="Color4" method="determine_if_show"]
 
 
