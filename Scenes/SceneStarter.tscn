@@ -1,0 +1,105 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/ColorChange.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/grass2.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/GrassColors.gd" type="Script" id=3]
+[ext_resource path="res://Sprites/grass.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 805, 75 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 28.0141, 429.951 )
+
+[node name="Default" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="0"]
+
+position = Vector2( -274, 494 )
+input_pickable = false
+collision_layer = 15
+collision_mask = 15
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+
+position = Vector2( 806.437, 74.5945 )
+shape = SubResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1610.0
+margin_bottom = 150.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="grass2" type="Sprite" parent="." index="1"]
+
+position = Vector2( 731.035, 477.229 )
+scale = Vector2( 0.550662, 0.550662 )
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="grass" type="Sprite" parent="." index="2"]
+
+position = Vector2( 66.4643, 481.183 )
+scale = Vector2( 0.462386, 0.462386 )
+texture = ExtResource( 4 )
+script = ExtResource( 3 )
+
+[node name="Wall" type="StaticBody2D" parent="." index="3"]
+
+editor/display_folded = true
+position = Vector2( 14.5933, 66.3461 )
+input_pickable = false
+collision_layer = 15
+collision_mask = 15
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" index="0"]
+
+position = Vector2( -46.9026, 209.961 )
+shape = SubResource( 2 )
+
+[node name="Wall2" type="StaticBody2D" parent="." index="4"]
+
+editor/display_folded = true
+position = Vector2( 1098.07, 66.3461 )
+input_pickable = false
+collision_layer = 15
+collision_mask = 15
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2" index="0"]
+
+position = Vector2( -46.9026, 209.961 )
+shape = SubResource( 2 )
+
+

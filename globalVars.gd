@@ -1,6 +1,10 @@
 extends Node
 # Keeps track of variables global to the project
 
+var current_level = 0
+
+var levels = ["Level1.tscn", "Level2.tscn"]
+
 var debug = false
 # What color is currently shown
 var color_index = 0
