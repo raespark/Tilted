@@ -10,7 +10,7 @@ var music_time = 0.0
 # Level player is currently playing
 var current_level = 0
 # Levels to traverse
-var levels = ["Level1.tscn", "Level2.tscn", "Level3.tscn"]
+var levels = ["Level1.tscn", "Level2.tscn", "Level4.tscn", "Level3.tscn", "Level5.tscn"]
 
 # What color is currently shown
 var color_index = 0

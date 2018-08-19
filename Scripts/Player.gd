@@ -38,7 +38,6 @@ func _rotate():
 		globalVars.color_index = (4 + globalVars.color_index + direction) % 4
 		set_collision_layer_bit(globalVars.color_index, 1)
 		set_collision_mask_bit(globalVars.color_index, 1)
-		print(globalVars.color_index)
 		emit_signal("color_change_needed")
 		return
 	self.rotation = rotation_degree

@@ -30,7 +30,7 @@ extents = Vector2( 28.0141, 429.951 )
 custom_solver_bias = 0.0
 extents = Vector2( 532.238, 25 )
 
-[node name="Level3" type="Node2D"]
+[node name="Level3" type="Node2D" index="0"]
 
 [node name="Background" type="Node2D" parent="." index="0"]
 
@@ -70,7 +70,6 @@ position = Vector2( 100, 110 )
 ] instance=ExtResource( 8 )]
 
 position = Vector2( 850, 40 )
-collision_mask = 0
 
 [node name="Default" type="Node2D" parent="." index="3"]
 
@@ -176,6 +175,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 color = Color( 1, 1, 1, 1 )
+script = ExtResource( 9 )
 
 [node name="Wall2" type="StaticBody2D" parent="Default" index="5"]
 
@@ -197,7 +197,6 @@ shape = SubResource( 2 )
 
 [node name="Color1" type="Node2D" parent="." index="4"]
 
-editor/display_folded = true
 script = ExtResource( 13 )
 color_index_to_hide = 0
 
@@ -281,22 +280,24 @@ shape = SubResource( 3 )
 
 [node name="Music" parent="." index="6" instance=ExtResource( 14 )]
 
-[connection signal="color_change_needed" from="Player" to="Default/StaticBody2D/ColorRect" method="_change_color"]
+[connection signal="color_change_needed" from="Player" to="Default/Wall3/ColorRect" method="_change_color"]
 
 [connection signal="color_change_needed" from="Player" to="Color1/Platform" method="_change_color"]
 
 [connection signal="color_change_needed" from="Player" to="Color2/Platform2" method="_change_color"]
 
-[connection signal="color_change_needed" from="Player" to="Color2" method="determine_if_show"]
+[connection signal="color_change_needed" from="Player" to="Default/grass2" method="_change_color"]
 
-[connection signal="color_change_needed" from="Player" to="Default/grass" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="Background/bush" method="_change_color"]
+[connection signal="color_change_needed" from="Player" to="Default/StaticBody2D/ColorRect" method="_change_color"]
 
 [connection signal="color_change_needed" from="Player" to="goal" method="_change_color"]
 
-[connection signal="color_change_needed" from="Player" to="Default/grass2" method="_change_color"]
+[connection signal="color_change_needed" from="Player" to="Default/grass" method="_change_color"]
 
 [connection signal="color_change_needed" from="Player" to="Color1" method="determine_if_show"]
+
+[connection signal="color_change_needed" from="Player" to="Color2" method="determine_if_show"]
+
+[connection signal="color_change_needed" from="Player" to="Background/bush" method="_change_color"]
 
 

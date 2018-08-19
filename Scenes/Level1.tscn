@@ -9,7 +9,7 @@
 [ext_resource path="res://Scripts/ColorChangeBackgroundSprite.gd" type="Script" id=7]
 [ext_resource path="res://Sprites/goal.png" type="Texture" id=8]
 [ext_resource path="res://Scripts/GrassColors.gd" type="Script" id=9]
-[ext_resource path="res://Scenes/Goal.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/Goal.gd" type="Script" id=10]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Scripts/ColorChange.gd" type="Script" id=12]
 [ext_resource path="res://Sprites/grass2.png" type="Texture" id=13]
@@ -32,7 +32,7 @@ extents = Vector2( 805, 75 )
 custom_solver_bias = 0.0
 extents = Vector2( 28.0141, 429.951 )
 
-[node name="Level1" type="Node2D" index="0"]
+[node name="Level1" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="." index="0"]
 
@@ -108,8 +108,6 @@ _sections_unfolded = [ "Visibility" ]
 position = Vector2( 140.759, 124.899 )
 
 [node name="Default" type="Node2D" parent="." index="3"]
-
-editor/display_folded = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Default" index="0"]
 
@@ -226,9 +224,7 @@ script = ExtResource( 3 )
 
 [node name="Music" parent="." index="7" instance=ExtResource( 16 )]
 
-[connection signal="color_change_needed" from="Player" to="Default/grass2" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="arrow" method="_change_color"]
+[connection signal="color_change_needed" from="Player" to="Default/StaticBody2D/ColorRect" method="_change_color"]
 
 [connection signal="color_change_needed" from="Player" to="Background/tinyCloud" method="_change_color"]
 
@@ -238,12 +234,14 @@ script = ExtResource( 3 )
 
 [connection signal="color_change_needed" from="Player" to="Background/tree" method="_change_color"]
 
-[connection signal="color_change_needed" from="Player" to="arrow3" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="arrow2" method="_change_color"]
+[connection signal="color_change_needed" from="Player" to="Default/grass2" method="_change_color"]
 
 [connection signal="color_change_needed" from="Player" to="Default/grass" method="_change_color"]
 
-[connection signal="color_change_needed" from="Player" to="Default/StaticBody2D/ColorRect" method="_change_color"]
+[connection signal="color_change_needed" from="Player" to="arrow" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="arrow3" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="arrow2" method="_change_color"]
 
 

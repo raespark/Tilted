@@ -1,10 +1,11 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Sounds/Music.wav" type="AudioStream" id=1]
-[ext_resource path="res://Scenes/Music.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Music.gd" type="Script" id=2]
 
-[node name="Music" type="AudioStreamPlayer2D" index="0"]
+[node name="Music" type="AudioStreamPlayer2D"]
 
+position = Vector2( 524.221, 296.473 )
 stream = ExtResource( 1 )
 volume_db = 0.0
 autoplay = false
