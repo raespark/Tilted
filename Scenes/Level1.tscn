@@ -226,24 +226,24 @@ script = ExtResource( 3 )
 
 [node name="Music" parent="." index="7" instance=ExtResource( 16 )]
 
+[connection signal="color_change_needed" from="Player" to="Background/smallCloud" method="_change_color"]
+
 [connection signal="color_change_needed" from="Player" to="Default/StaticBody2D/ColorRect" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="Background/tree" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="Default/grass" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="Default/grass2" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="Background/cloud" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="Background/tinyCloud" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="arrow" method="_change_color"]
 
 [connection signal="color_change_needed" from="Player" to="arrow3" method="_change_color"]
 
+[connection signal="color_change_needed" from="Player" to="Default/grass2" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Default/grass" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Background/tinyCloud" method="_change_color"]
+
 [connection signal="color_change_needed" from="Player" to="arrow2" method="_change_color"]
 
-[connection signal="color_change_needed" from="Player" to="Background/smallCloud" method="_change_color"]
+[connection signal="color_change_needed" from="Player" to="arrow" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Background/cloud" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Background/tree" method="_change_color"]
 
 
