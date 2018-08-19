@@ -22,12 +22,12 @@
 custom_solver_bias = 0.0
 extents = Vector2( 20.085, 60.4385 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 805, 75 )
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 28.0141, 429.951 )
@@ -126,7 +126,7 @@ _sections_unfolded = [ "Collision" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Default/StaticBody2D" index="0"]
 
 position = Vector2( 806.437, 74.5945 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="Default/StaticBody2D" index="1"]
 
@@ -176,7 +176,7 @@ _sections_unfolded = [ "Collision" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Default/Wall" index="0"]
 
 position = Vector2( -46.9026, 209.961 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="Wall2" type="StaticBody2D" parent="Default" index="4"]
 
@@ -194,7 +194,7 @@ _sections_unfolded = [ "Collision" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Default/Wall2" index="0"]
 
 position = Vector2( -46.9026, 209.961 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="arrow" type="Sprite" parent="." index="4"]
 
@@ -226,24 +226,24 @@ script = ExtResource( 3 )
 
 [node name="Music" parent="." index="7" instance=ExtResource( 16 )]
 
-[connection signal="color_change_needed" from="Player" to="Background/smallCloud" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="Default/StaticBody2D/ColorRect" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="arrow3" method="_change_color"]
-
 [connection signal="color_change_needed" from="Player" to="Default/grass2" method="_change_color"]
 
-[connection signal="color_change_needed" from="Player" to="Default/grass" method="_change_color"]
+[connection signal="color_change_needed" from="Player" to="arrow" method="_change_color"]
 
 [connection signal="color_change_needed" from="Player" to="Background/tinyCloud" method="_change_color"]
 
-[connection signal="color_change_needed" from="Player" to="arrow2" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="arrow" method="_change_color"]
+[connection signal="color_change_needed" from="Player" to="Background/smallCloud" method="_change_color"]
 
 [connection signal="color_change_needed" from="Player" to="Background/cloud" method="_change_color"]
 
 [connection signal="color_change_needed" from="Player" to="Background/tree" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="arrow3" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="arrow2" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Default/grass" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Default/StaticBody2D/ColorRect" method="_change_color"]
 
 

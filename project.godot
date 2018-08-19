@@ -23,6 +23,19 @@ globalVars="*res://globalVars.gd"
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
+[importer_defaults]
+
+wav={
+"compress/mode": 0,
+"edit/loop": false,
+"edit/normalize": true,
+"edit/trim": true,
+"force/8_bit": false,
+"force/max_rate": false,
+"force/max_rate_hz": 44100,
+"force/mono": true
+}
+
 [rendering]
 
 environment/default_clear_color=Color( 0.121569, 0.141176, 0.129412, 1 )

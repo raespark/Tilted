@@ -30,7 +30,7 @@ extents = Vector2( 28.0141, 429.951 )
 custom_solver_bias = 0.0
 extents = Vector2( 532.238, 25 )
 
-[node name="Level3" type="Node2D" index="0"]
+[node name="Level3" type="Node2D"]
 
 [node name="Background" type="Node2D" parent="." index="0"]
 
@@ -281,22 +281,22 @@ shape = SubResource( 3 )
 
 [node name="Music" parent="." index="6" instance=ExtResource( 14 )]
 
-[connection signal="color_change_needed" from="Player" to="Default/grass2" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="Color2/Platform2" method="_change_color"]
+[connection signal="color_change_needed" from="Player" to="Default/StaticBody2D/ColorRect" method="_change_color"]
 
 [connection signal="color_change_needed" from="Player" to="Color1/Platform" method="_change_color"]
 
-[connection signal="color_change_needed" from="Player" to="Default/StaticBody2D/ColorRect" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="Background/bush" method="_change_color"]
+[connection signal="color_change_needed" from="Player" to="Color2/Platform2" method="_change_color"]
 
 [connection signal="color_change_needed" from="Player" to="Color2" method="determine_if_show"]
 
 [connection signal="color_change_needed" from="Player" to="Default/grass" method="_change_color"]
 
-[connection signal="color_change_needed" from="Player" to="Color1" method="determine_if_show"]
+[connection signal="color_change_needed" from="Player" to="Background/bush" method="_change_color"]
 
 [connection signal="color_change_needed" from="Player" to="goal" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Default/grass2" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Color1" method="determine_if_show"]
 
 
