@@ -6,4 +6,4 @@ func _physics_process(delta):
 		if body.get_groups().find("Player") != -1:
 			globalVars.current_level += 1
 			globalVars.music_time = get_parent().get_parent().find_node("Music").get_playback_position()
-			get_tree().change_scene("res://Scenes/" + globalVars.levels[globalVars.current_level])
+			get_tree().reload_current_scene()

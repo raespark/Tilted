@@ -5,5 +5,4 @@ extends AudioStreamPlayer2D
 # var b = "textvar"
 
 func _ready():
-	# play(globalVars.music_time)
-	pass
+	play(globalVars.music_time)

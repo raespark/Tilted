@@ -1,0 +1,385 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Scenes/Goal.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Sprites/bush.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/ColorChangeBackgroundSprite.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/ColorChange.gd" type="Script" id=5]
+[ext_resource path="res://Sprites/grass2.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/GrassColors.gd" type="Script" id=7]
+[ext_resource path="res://Sprites/grass.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/DeathZone.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/HideForColor.gd" type="Script" id=10]
+[ext_resource path="res://Scenes/Music.tscn" type="PackedScene" id=11]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 252.92, 75 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 28.0141, 429.951 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="goal" parent="." index="0" instance=ExtResource( 1 )]
+
+position = Vector2( 85.4279, 437.441 )
+
+[node name="Player" parent="." index="1" groups=[
+"Player",
+] instance=ExtResource( 2 )]
+
+position = Vector2( 875.219, 411.202 )
+
+[node name="Default" type="Node2D" parent="." index="2"]
+
+editor/display_folded = true
+
+[node name="bush" type="Sprite" parent="Default" index="0"]
+
+position = Vector2( 476.742, 471.801 )
+scale = Vector2( 0.411066, 0.411066 )
+texture = ExtResource( 3 )
+script = ExtResource( 4 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Default" index="1"]
+
+editor/display_folded = true
+position = Vector2( -283.381, 486.39 )
+scale = Vector2( 0.706837, 0.762186 )
+input_pickable = false
+collision_layer = 15
+collision_mask = 15
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Default/StaticBody2D" index="0"]
+
+position = Vector2( 433.835, 74.5944 )
+shape = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Default/StaticBody2D" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 182.0
+margin_right = 689.0
+margin_bottom = 150.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Default" index="2"]
+
+editor/display_folded = true
+position = Vector2( 669.155, 486.39 )
+scale = Vector2( 0.521827, 0.762186 )
+input_pickable = false
+collision_layer = 15
+collision_mask = 15
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Default/StaticBody2D2" index="0"]
+
+position = Vector2( 433.835, 74.5944 )
+shape = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Default/StaticBody2D2" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 182.0
+margin_right = 689.0
+margin_bottom = 150.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Default" index="3"]
+
+editor/display_folded = true
+position = Vector2( 352.028, 486.39 )
+scale = Vector2( 0.286542, 0.762186 )
+input_pickable = false
+collision_layer = 15
+collision_mask = 15
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Default/StaticBody2D3" index="0"]
+
+position = Vector2( 433.835, 74.5944 )
+shape = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Default/StaticBody2D3" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 182.0
+margin_right = 689.0
+margin_bottom = 150.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Default" index="4"]
+
+editor/display_folded = true
+position = Vector2( 1412.27, 13.1601 )
+scale = Vector2( -2.0729, 2.05069 )
+input_pickable = false
+collision_layer = 15
+collision_mask = 15
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Default/StaticBody2D4" index="0"]
+
+position = Vector2( 433.835, 74.5944 )
+shape = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Default/StaticBody2D4" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 182.0
+margin_top = -23.0
+margin_right = 689.0
+margin_bottom = 150.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="grass2" type="Sprite" parent="Default" index="5"]
+
+position = Vector2( 950.672, 477.229 )
+scale = Vector2( 0.550662, 0.550662 )
+texture = ExtResource( 6 )
+script = ExtResource( 7 )
+
+[node name="grass" type="Sprite" parent="Default" index="6"]
+
+position = Vector2( 66.4643, 481.183 )
+scale = Vector2( 0.462386, 0.462386 )
+texture = ExtResource( 8 )
+script = ExtResource( 7 )
+
+[node name="Wall" type="StaticBody2D" parent="Default" index="7"]
+
+editor/display_folded = true
+position = Vector2( 14.5933, 66.3461 )
+input_pickable = false
+collision_layer = 15
+collision_mask = 15
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Default/Wall" index="0"]
+
+position = Vector2( -46.9026, 209.961 )
+shape = SubResource( 2 )
+
+[node name="DeathZone" type="Area2D" parent="Default" index="8"]
+
+editor/display_folded = true
+position = Vector2( 788.94, 789.038 )
+rotation = 1.57116
+scale = Vector2( 1.39208, 1.33185 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 15
+collision_mask = 15
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 9 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Default/DeathZone" index="0"]
+
+position = Vector2( -46.9026, 209.961 )
+shape = SubResource( 2 )
+
+[node name="Wall2" type="StaticBody2D" parent="Default" index="9"]
+
+editor/display_folded = true
+position = Vector2( 1098.07, 66.3461 )
+input_pickable = false
+collision_layer = 15
+collision_mask = 15
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Default/Wall2" index="0"]
+
+position = Vector2( -46.9026, 209.961 )
+shape = SubResource( 2 )
+
+[node name="Color3" type="Node2D" parent="." index="3"]
+
+editor/display_folded = true
+script = ExtResource( 10 )
+color_index_to_hide = 2
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Color3" index="0"]
+
+position = Vector2( 454.376, 486.39 )
+scale = Vector2( 0.472224, 0.762186 )
+input_pickable = false
+collision_layer = 11
+collision_mask = 11
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Color3/StaticBody2D5" index="0"]
+
+position = Vector2( 433.835, 74.5944 )
+shape = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Color3/StaticBody2D5" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 182.0
+margin_right = 689.0
+margin_bottom = 150.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="Color1" type="Node2D" parent="." index="4"]
+
+script = ExtResource( 10 )
+color_index_to_hide = 0
+
+[node name="StaticBody2D5" type="StaticBody2D" parent="Color1" index="0"]
+
+position = Vector2( 88.8708, 486.39 )
+scale = Vector2( 0.472224, 0.762186 )
+input_pickable = false
+collision_layer = 14
+collision_mask = 14
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Color1/StaticBody2D5" index="0"]
+
+position = Vector2( 433.835, 74.5944 )
+shape = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="Color1/StaticBody2D5" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 182.0
+margin_right = 689.0
+margin_bottom = 150.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+script = ExtResource( 5 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="Music" parent="." index="5" instance=ExtResource( 11 )]
+
+[connection signal="color_change_needed" from="Player" to="goal" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Default/StaticBody2D3/ColorRect" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Default/StaticBody2D/ColorRect" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Default/StaticBody2D4/ColorRect" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Default/bush" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Color3" method="determine_if_show"]
+
+[connection signal="color_change_needed" from="Player" to="Color1/StaticBody2D5/ColorRect" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Default/StaticBody2D2/ColorRect" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Color3/StaticBody2D5/ColorRect" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Color1" method="determine_if_show"]
+
+[connection signal="color_change_needed" from="Player" to="Default/grass2" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Default/grass" method="_change_color"]
+
+
