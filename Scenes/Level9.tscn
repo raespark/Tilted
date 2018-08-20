@@ -1,0 +1,363 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Sprites/smallCloud.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/CloudColors.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/cloud.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/tinyCloud.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Goal.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Sprites/grass.png" type="Texture" id=7]
+[ext_resource path="res://Scripts/GrassColors.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/DeathZone.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scripts/ColorChange.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/ShowForColor.gd" type="Script" id=11]
+[ext_resource path="res://Scripts/HideForColor.gd" type="Script" id=12]
+[ext_resource path="res://Scenes/Music.tscn" type="PackedScene" id=13]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 28.0141, 429.951 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 85, 25 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 85, 25 )
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 85, 25 )
+
+[node name="Level9" type="Node2D"]
+
+[node name="Background" type="Node2D" parent="." index="0"]
+
+[node name="smallCloud" type="Sprite" parent="Background" index="0"]
+
+position = Vector2( 19.4403, 291.521 )
+rotation = -3.20719
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="cloud" type="Sprite" parent="Background" index="1"]
+
+position = Vector2( 744.523, 210.073 )
+rotation = 0.162237
+texture = ExtResource( 3 )
+script = ExtResource( 2 )
+
+[node name="tinyCloud" type="Sprite" parent="Background" index="2"]
+
+position = Vector2( 881.593, 301.454 )
+rotation = 0.295392
+texture = ExtResource( 4 )
+script = ExtResource( 2 )
+
+[node name="cloud2" type="Sprite" parent="Background" index="3"]
+
+position = Vector2( 784.573, 596.427 )
+scale = Vector2( -0.770498, 0.590602 )
+texture = ExtResource( 3 )
+script = ExtResource( 2 )
+
+[node name="goal" parent="." index="1" instance=ExtResource( 5 )]
+
+position = Vector2( 949.456, 101.018 )
+
+[node name="Player" parent="." index="2" groups=[
+"Player",
+] instance=ExtResource( 6 )]
+
+position = Vector2( 477.351, 532.827 )
+
+[node name="Default" type="Node2D" parent="." index="3"]
+
+[node name="grass" type="Sprite" parent="Default" index="0"]
+
+position = Vector2( 403.3, 584.2 )
+rotation = 0.0423604
+scale = Vector2( 0.196249, 0.462386 )
+texture = ExtResource( 7 )
+script = ExtResource( 8 )
+
+[node name="grass2" type="Sprite" parent="Default" index="1"]
+
+position = Vector2( 558.345, 571.678 )
+scale = Vector2( -0.211686, 0.148987 )
+texture = ExtResource( 7 )
+script = ExtResource( 8 )
+
+[node name="Wall" type="StaticBody2D" parent="Default" index="2"]
+
+editor/display_folded = true
+position = Vector2( 14.5933, 66.3461 )
+input_pickable = false
+collision_layer = 15
+collision_mask = 15
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Default/Wall" index="0"]
+
+position = Vector2( -46.9026, 209.961 )
+shape = SubResource( 1 )
+
+[node name="Wall2" type="StaticBody2D" parent="Default" index="3"]
+
+editor/display_folded = true
+position = Vector2( 1098.07, 66.3461 )
+input_pickable = false
+collision_layer = 15
+collision_mask = 15
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Default/Wall2" index="0"]
+
+position = Vector2( -46.9026, 209.961 )
+shape = SubResource( 1 )
+
+[node name="DeathZone" parent="Default" index="4" instance=ExtResource( 9 )]
+
+[node name="Platform" type="ColorRect" parent="Default" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 394.0
+margin_top = 573.0
+margin_right = 564.0
+margin_bottom = 623.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+script = ExtResource( 10 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Default/Platform" index="0"]
+
+input_pickable = false
+collision_layer = 15
+collision_mask = 15
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Default/Platform/StaticBody2D" index="0"]
+
+position = Vector2( 85.1012, 25.1118 )
+shape = SubResource( 2 )
+
+[node name="Platform2" type="ColorRect" parent="Default" index="6"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 852.0
+margin_top = 166.0
+margin_right = 1022.0
+margin_bottom = 216.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+script = ExtResource( 10 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Default/Platform2" index="0"]
+
+input_pickable = false
+collision_layer = 15
+collision_mask = 15
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Default/Platform2/StaticBody2D" index="0"]
+
+position = Vector2( 85.1012, 25.1118 )
+shape = SubResource( 4 )
+
+[node name="Color2" type="Node2D" parent="." index="4"]
+
+script = ExtResource( 11 )
+color_index_to_hide = 1
+
+[node name="Platform" type="ColorRect" parent="Color2" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 605.0
+margin_top = 402.0
+margin_right = 775.0
+margin_bottom = 452.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+script = ExtResource( 10 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Color2/Platform" index="0"]
+
+input_pickable = false
+collision_layer = 2
+collision_mask = 2
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Color2/Platform/StaticBody2D" index="0"]
+
+position = Vector2( 85.1012, 25.1118 )
+shape = SubResource( 4 )
+
+[node name="Color3" type="Node2D" parent="." index="5"]
+
+script = ExtResource( 12 )
+color_index_to_hide = 2
+
+[node name="Platform" type="ColorRect" parent="Color3" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 396.0
+margin_top = 226.0
+margin_right = 566.0
+margin_bottom = 276.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+script = ExtResource( 10 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Color3/Platform" index="0"]
+
+input_pickable = false
+collision_layer = 11
+collision_mask = 11
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Color3/Platform/StaticBody2D" index="0"]
+
+position = Vector2( 85.1012, 25.1118 )
+shape = SubResource( 2 )
+
+[node name="Color4" type="Node2D" parent="." index="6"]
+
+script = ExtResource( 11 )
+color_index_to_hide = 3
+
+[node name="Platform" type="ColorRect" parent="Color4" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 177.0
+margin_top = 407.0
+margin_right = 347.0
+margin_bottom = 457.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+script = ExtResource( 10 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Color4/Platform" index="0"]
+
+input_pickable = false
+collision_layer = 8
+collision_mask = 8
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Color4/Platform/StaticBody2D" index="0"]
+
+position = Vector2( 85.1012, 25.1118 )
+shape = SubResource( 3 )
+
+[node name="Node2D" type="Node2D" parent="." index="7"]
+
+[node name="Music" parent="." index="8" instance=ExtResource( 13 )]
+
+[connection signal="color_change_needed" from="Player" to="Color4/Platform" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="goal" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Color3/Platform" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Background/cloud" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Color3" method="determine_if_show"]
+
+[connection signal="color_change_needed" from="Player" to="Default/grass" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Color2/Platform" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Default/Platform2" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Default/Platform" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Background/tinyCloud" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Default/grass2" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Background/smallCloud" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Background/cloud2" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Color4" method="determine_if_show"]
+
+[connection signal="color_change_needed" from="Player" to="Color2" method="determine_if_show"]
+
+

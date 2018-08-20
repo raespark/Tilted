@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Goal.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
@@ -15,14 +15,29 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 252.92, 75 )
+extents = Vector2( 252.92, 76 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 28.0141, 429.951 )
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 28.0141, 429.951 )
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 252.92, 75.4639 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+custom_solver_bias = 0.0
+extents = Vector2( 252.92, 75.8331 )
+
+[node name="Level6" type="Node2D"]
 
 [node name="goal" parent="." index="0" instance=ExtResource( 1 )]
 
@@ -35,8 +50,6 @@ position = Vector2( 85.4279, 437.441 )
 position = Vector2( 875.219, 411.202 )
 
 [node name="Default" type="Node2D" parent="." index="2"]
-
-editor/display_folded = true
 
 [node name="bush" type="Sprite" parent="Default" index="0"]
 
@@ -61,7 +74,8 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Default/StaticBody2D" index="0"]
 
-position = Vector2( 433.835, 74.5944 )
+position = Vector2( 433.835, 160.12 )
+scale = Vector2( 1, 2.09648 )
 shape = SubResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="Default/StaticBody2D" index="1"]
@@ -85,7 +99,6 @@ _sections_unfolded = [ "Rect" ]
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Default" index="2"]
 
-editor/display_folded = true
 position = Vector2( 669.155, 486.39 )
 scale = Vector2( 0.521827, 0.762186 )
 input_pickable = false
@@ -99,7 +112,8 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Default/StaticBody2D2" index="0"]
 
-position = Vector2( 433.835, 74.5944 )
+position = Vector2( 433.835, 163.338 )
+scale = Vector2( 1, 2.13774 )
 shape = SubResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="Default/StaticBody2D2" index="1"]
@@ -137,7 +151,8 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Default/StaticBody2D3" index="0"]
 
-position = Vector2( 433.835, 74.5944 )
+position = Vector2( 433.835, 156.902 )
+scale = Vector2( 1, 2.05523 )
 shape = SubResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="Default/StaticBody2D3" index="1"]
@@ -233,7 +248,7 @@ shape = SubResource( 2 )
 [node name="DeathZone" type="Area2D" parent="Default" index="8"]
 
 editor/display_folded = true
-position = Vector2( 788.94, 789.038 )
+position = Vector2( 786.029, 692.974 )
 rotation = 1.57116
 scale = Vector2( 1.39208, 1.33185 )
 input_pickable = false
@@ -251,7 +266,7 @@ _sections_unfolded = [ "Collision" ]
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Default/DeathZone" index="0"]
 
 position = Vector2( -46.9026, 209.961 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="Wall2" type="StaticBody2D" parent="Default" index="9"]
 
@@ -273,7 +288,6 @@ shape = SubResource( 2 )
 
 [node name="Color3" type="Node2D" parent="." index="3"]
 
-editor/display_folded = true
 script = ExtResource( 10 )
 color_index_to_hide = 2
 
@@ -292,8 +306,9 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Color3/StaticBody2D5" index="0"]
 
-position = Vector2( 433.835, 74.5944 )
-shape = SubResource( 1 )
+position = Vector2( 433.835, 135.878 )
+scale = Vector2( 1, 1.78568 )
+shape = SubResource( 6 )
 
 [node name="ColorRect" type="ColorRect" parent="Color3/StaticBody2D5" index="1"]
 
@@ -334,8 +349,9 @@ _sections_unfolded = [ "Collision" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Color1/StaticBody2D5" index="0"]
 
-position = Vector2( 433.835, 74.5944 )
-shape = SubResource( 1 )
+position = Vector2( 433.835, 144.511 )
+scale = Vector2( 1, 1.89636 )
+shape = SubResource( 7 )
 
 [node name="ColorRect" type="ColorRect" parent="Color1/StaticBody2D5" index="1"]
 
@@ -360,26 +376,26 @@ _sections_unfolded = [ "Rect" ]
 
 [connection signal="color_change_needed" from="Player" to="goal" method="_change_color"]
 
-[connection signal="color_change_needed" from="Player" to="Default/StaticBody2D3/ColorRect" method="_change_color"]
+[connection signal="color_change_needed" from="Player" to="Default/grass2" method="_change_color"]
 
 [connection signal="color_change_needed" from="Player" to="Default/StaticBody2D/ColorRect" method="_change_color"]
 
-[connection signal="color_change_needed" from="Player" to="Default/StaticBody2D4/ColorRect" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="Default/bush" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="Color3" method="determine_if_show"]
-
-[connection signal="color_change_needed" from="Player" to="Color1/StaticBody2D5/ColorRect" method="_change_color"]
-
 [connection signal="color_change_needed" from="Player" to="Default/StaticBody2D2/ColorRect" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Default/StaticBody2D3/ColorRect" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Default/StaticBody2D4/ColorRect" method="_change_color"]
 
 [connection signal="color_change_needed" from="Player" to="Color3/StaticBody2D5/ColorRect" method="_change_color"]
 
-[connection signal="color_change_needed" from="Player" to="Color1" method="determine_if_show"]
-
-[connection signal="color_change_needed" from="Player" to="Default/grass2" method="_change_color"]
+[connection signal="color_change_needed" from="Player" to="Color1/StaticBody2D5/ColorRect" method="_change_color"]
 
 [connection signal="color_change_needed" from="Player" to="Default/grass" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Color3" method="determine_if_show"]
+
+[connection signal="color_change_needed" from="Player" to="Color1" method="determine_if_show"]
+
+[connection signal="color_change_needed" from="Player" to="Default/bush" method="_change_color"]
 
 

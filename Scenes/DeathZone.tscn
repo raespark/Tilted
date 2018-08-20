@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/DeathZone.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 28.0141, 429.951 )
+
+[node name="DeathZone" type="Area2D"]
+
+editor/display_folded = true
+position = Vector2( 788.94, 789.038 )
+rotation = 1.57116
+scale = Vector2( 1.39208, 1.33185 )
+input_pickable = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+collision_layer = 15
+collision_mask = 15
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+position = Vector2( -46.9026, 209.961 )
+shape = SubResource( 2 )
+
+

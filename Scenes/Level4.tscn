@@ -149,6 +149,7 @@ shape = SubResource( 2 )
 
 [node name="Platform" type="ColorRect" parent="Default" index="4"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -220,9 +221,57 @@ _sections_unfolded = [ "Collision" ]
 position = Vector2( 211.43, 297.767 )
 shape = SubResource( 3 )
 
-[node name="Color4" type="Node2D" parent="." index="4"]
+[node name="Color1" type="Node2D" parent="." index="4"]
 
-editor/display_folded = true
+script = ExtResource( 10 )
+color_index_to_hide = 0
+
+[node name="Platform" type="ColorRect" parent="Color1" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 354.0
+margin_top = 105.0
+margin_right = 661.0
+margin_bottom = 155.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 1, 1, 1, 1 )
+script = ExtResource( 7 )
+_sections_unfolded = [ "Rect" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Color1/Platform" index="0"]
+
+input_pickable = false
+collision_layer = 14
+collision_mask = 14
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+_sections_unfolded = [ "Collision", "Pickable" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Color1/Platform/StaticBody2D" index="0"]
+
+position = Vector2( 157.113, 25.1118 )
+shape = SubResource( 4 )
+
+[node name="grass" type="Sprite" parent="Color1" index="1"]
+
+position = Vector2( 434.304, 86.2544 )
+scale = Vector2( 0.572023, 0.572023 )
+texture = ExtResource( 11 )
+script = ExtResource( 9 )
+
+[node name="Color4" type="Node2D" parent="." index="5"]
+
+position = Vector2( 0, 172.778 )
 script = ExtResource( 10 )
 color_index_to_hide = 3
 
@@ -262,56 +311,7 @@ _sections_unfolded = [ "Collision", "Pickable" ]
 position = Vector2( 157.113, 25.1118 )
 shape = SubResource( 4 )
 
-[node name="grass" type="Sprite" parent="Color4" index="1"]
-
-position = Vector2( 434.304, 86.2544 )
-scale = Vector2( 0.572023, 0.572023 )
-texture = ExtResource( 11 )
-script = ExtResource( 9 )
-
-[node name="Color3" type="Node2D" parent="." index="5"]
-
-position = Vector2( 0, 172.778 )
-script = ExtResource( 10 )
-color_index_to_hide = 2
-
-[node name="Platform" type="ColorRect" parent="Color3" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 354.0
-margin_top = 105.0
-margin_right = 661.0
-margin_bottom = 155.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-color = Color( 1, 1, 1, 1 )
-script = ExtResource( 7 )
-_sections_unfolded = [ "Rect" ]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Color3/Platform" index="0"]
-
-input_pickable = false
-collision_layer = 11
-collision_mask = 11
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
-friction = 1.0
-bounce = 0.0
-_sections_unfolded = [ "Collision", "Pickable" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Color3/Platform/StaticBody2D" index="0"]
-
-position = Vector2( 157.113, 25.1118 )
-shape = SubResource( 4 )
-
-[node name="grass2" type="Sprite" parent="Color3" index="1"]
+[node name="grass2" type="Sprite" parent="Color4" index="1"]
 
 position = Vector2( 619.949, 92.2631 )
 scale = Vector2( 0.703259, 0.703259 )
@@ -322,26 +322,26 @@ script = ExtResource( 9 )
 
 [connection signal="color_change_needed" from="Player" to="Default/Platform" method="_change_color"]
 
-[connection signal="color_change_needed" from="Player" to="Default/Platform2" method="_change_color"]
+[connection signal="color_change_needed" from="Player" to="Default/StaticBody2D/ColorRect" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Color1/Platform" method="_change_color"]
 
 [connection signal="color_change_needed" from="Player" to="Color4/Platform" method="_change_color"]
 
-[connection signal="color_change_needed" from="Player" to="Color3/Platform" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="Default/StaticBody2D/ColorRect" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="Color3" method="determine_if_show"]
-
-[connection signal="color_change_needed" from="Player" to="Color4" method="determine_if_show"]
-
-[connection signal="color_change_needed" from="Player" to="goal" method="_change_color"]
+[connection signal="color_change_needed" from="Player" to="Default/Platform2" method="_change_color"]
 
 [connection signal="color_change_needed" from="Player" to="Background/cloud" method="_change_color"]
 
+[connection signal="color_change_needed" from="Player" to="goal" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Color1" method="determine_if_show"]
+
+[connection signal="color_change_needed" from="Player" to="Color1/grass" method="_change_color"]
+
+[connection signal="color_change_needed" from="Player" to="Color4" method="determine_if_show"]
+
+[connection signal="color_change_needed" from="Player" to="Color4/grass2" method="_change_color"]
+
 [connection signal="color_change_needed" from="Player" to="Background/smallCloud" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="Color4/grass" method="_change_color"]
-
-[connection signal="color_change_needed" from="Player" to="Color3/grass2" method="_change_color"]
 
 

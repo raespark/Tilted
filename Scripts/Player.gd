@@ -47,12 +47,12 @@ func _physics_process(delta):
 	var friction = false
 	if is_rotating:
 		_rotate()
-	elif Input.is_action_just_pressed("ui_left"):
+	elif Input.is_action_pressed("ui_left"):
 		direction = -1
 		is_rotating = true
 		$Backward.play()
 		velocity.x += direction * MOVEMENT_SPEED
-	elif Input.is_action_just_pressed("ui_right"):
+	elif Input.is_action_pressed("ui_right"):
 		direction = 1
 		is_rotating = true
 		$Forward.play()

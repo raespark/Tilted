@@ -49,7 +49,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="Backward" type="AudioStreamPlayer2D" parent="." index="2"]
 
 stream = ExtResource( 3 )
-volume_db = -1.0
+volume_db = -3.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
@@ -59,7 +59,7 @@ area_mask = 1
 [node name="Forward" type="AudioStreamPlayer2D" parent="." index="3"]
 
 stream = ExtResource( 4 )
-volume_db = -1.0
+volume_db = -3.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
